@@ -12,7 +12,7 @@ var menu = {
 
 		this.playbtn = game.add.button(20, 950, 'playbtn', this.play_game, this, 0, 1);
 
-		if (BEST > 59)
+		if (BEST > 4)
 			game.add.button(150, 950, 'hardcoreb', this.play_hardcore, this, 0, 1);
 		else
 			game.add.button(150, 950, 'hardcoreb', this.not_yet, this, 0, 1);
@@ -34,7 +34,7 @@ var menu = {
 	},
 
 	play_game: function() {
-		ḦARDCORE = 0;
+		HARDCORE = 0;
 		this.game.state.start('play');
 	},
 

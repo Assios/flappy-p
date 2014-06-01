@@ -4,6 +4,11 @@ var play = {
             this.air = this.game.add.audio('air');
             this.air.volume = 1.6;
             this.air.play();
+            this.novelle = this.game.add.audio('novelle');
+            this.novelle.stop();
+            if (HARDCORE) {
+                this.novelle.play();
+            }
         }
 
         this.sky = game.add.sprite(0, 0, 'sky');
@@ -83,7 +88,7 @@ var play = {
             else if (this.score < 30)
                 this.player.body.position.y += Math.cos(Date.now()) * (10 + ((this.score-10)/3));
             else
-                this.player.body.position.y += Math.cos(Date.now()) * 20;
+                this.player.body.position.y += Math.cos(Date.now()) * (10 + ((this.score-10)/3));
         }
     },
 
@@ -102,6 +107,8 @@ var play = {
         LAST = SCORE;
         if (SOUND)
             this.air.stop();
+            if (HARDCORE)
+                this.novelle.stop();
         game.state.start('menu');
     },
     add_p: function () {
