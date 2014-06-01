@@ -12,7 +12,7 @@ var menu = {
 
 		this.playbtn = game.add.button(20, 950, 'playbtn', this.play_game, this, 0, 1);
 
-		if (BEST > 19)
+		if (BEST > 59)
 			game.add.button(150, 950, 'hardcoreb', this.play_hardcore, this, 0, 1);
 		else
 			game.add.button(150, 950, 'hardcoreb', this.not_yet, this, 0, 1);
@@ -31,8 +31,6 @@ var menu = {
             align: "center"
         });
 
-
-		//Lag meny her
 	},
 
 	play_game: function() {
@@ -46,7 +44,7 @@ var menu = {
 	},
 
 	not_yet: function() {
-		this.game.add.text(20, 800, "You need 20 points to unlock hardcore mode", {
+		this.game.add.text(20, 800, "You need 60 points to unlock hardcore mode", {
             font: "28px Arial",
             fill: "#000",
             align: "center"
