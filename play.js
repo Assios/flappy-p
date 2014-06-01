@@ -1,8 +1,35 @@
 var play = {
     create: function () {
+        if (SOUND) {
+            this.air = this.game.add.audio('air');
+            this.air.volume = 1.6;
+            this.air.play();
+        }
 
         this.sky = game.add.sprite(0, 0, 'sky');
 
+        if (SOUND) {
+        this.m1 = this.game.add.audio('m1');
+        this.m2 = this.game.add.audio('m2');
+        this.m3 = this.game.add.audio('m3');
+        this.m4 = this.game.add.audio('m4');
+        this.m5 = this.game.add.audio('m5');
+        this.m6 = this.game.add.audio('m6');
+        this.m7 = this.game.add.audio('m7');
+        this.m8 = this.game.add.audio('m8');
+        this.m9 = this.game.add.audio('m9');
+        this.m10 = this.game.add.audio('m10');
+        this.m1.volume = 0.3;
+        this.m2.volume = 0.3;
+        this.m3.volume = 0.3;
+        this.m4.volume = 0.3;
+        this.m5.volume = 0.3;
+        this.m6.volume = 0.3;
+        this.m7.volume = 0.3;
+        this.m8.volume = 0.3;
+        this.m9.volume = 0.3;
+        this.m10.volume = 0.3;
+        }
         this.space = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         this.powerade = game.add.group();
         this.powerade.createMultiple(5, 'powerade');
@@ -36,7 +63,7 @@ var play = {
             fill: "#000",
             align: "center"
         });
-        this.player.body.setSize(40, 30, 0, 0);
+        this.player.body.setSize(32, 34, 10, 10);
         this.player.body.gravity.y = 1600;
         this.timer = this.game.time.events.loop(1800, this.add_p, this);
         this.game.time.events.loop(1800, this.updateScore, this);
@@ -50,9 +77,7 @@ var play = {
         game.physics.arcade.collide(this.player, this.powerade, 0, this.restart, this);
         game.physics.arcade.collide(this.player, this.poweradef, 0, this.restart, this)
     },
-    render: function () {
-        game.debug.body(this.powerade)
-    },
+
     jump: function () {
         this.player.body.velocity.y = -600;
         tweenz = this.game.add.tween(this.player);
@@ -60,32 +85,63 @@ var play = {
             angle: -20
         }, 100);
         tweenz.start();
-        if ((Math.floor(Math.random() * 2) + 1) == 1) {
-            //this.ah.play()
-        } else {
-            //this.mhm.play()
-        }
+
+        if (SOUND)
+            this.randomSound();
     },
     restart: function () {
+        LAST = SCORE;
+        this.air.stop();
         game.state.start('menu');
     },
     add_p: function () {
-        var power = this.powerade.getFirstDead();
-        var power2 = this.poweradef.getFirstDead();
-        power.body.setSize(169, 581, 50, 90);
-        power2.body.setSize(169, 581, 50, 40);
+        this.power = this.powerade.getFirstDead();
+        this.power2 = this.poweradef.getFirstDead();
+        this.power.body.setSize(139, 581, 35, 115);
+        this.power2.body.setSize(139, 600, 35, 20);
         var random = Math.floor(Math.random() * 400) - 200;
-        power.reset(W, DEFAULT_UP + random);
-        power2.reset(W, DEFAULT_DOWN + random);
-        power.body.velocity.x = -250;
-        power2.body.velocity.x = -250
+        this.power.reset(W, DEFAULT_UP + random);
+        this.power2.reset(W, DEFAULT_DOWN + random);
+        this.power.body.velocity.x = -250;
+        this.power2.body.velocity.x = -250
     },
     updateScore: function () {
         this.score += 1;
+        SCORE = this.score;
         if (this.score > BEST) {
             BEST = this.score
         }
-        this.scoretext.text = "SCORE: " + this.score;
+        this.scoretext.text = "SCORE: " + SCORE;
         this.besttext.text = "BEST: " + BEST
     },
+    randomSound: function() {
+        switch(Math.floor((Math.random() * 10) + 1)) {
+            case 1:
+                this.m1.play();
+                break;
+            case 2:
+                this.m2.play();
+                break;
+            case 3:
+                this.m3.play();
+                break;
+            case 4:
+                this.m4.play();
+                break;
+            case 5:
+                this.m5.play();
+                break;
+            case 6:
+                this.m6.play();
+                break;
+            case 7:
+                this.m7.play();
+            case 8:
+                this.m8.play();
+            case 9:
+                this.m9.play();
+            case 10:
+                this.m10.play();
+        }
+    }
 }
