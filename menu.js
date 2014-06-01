@@ -6,6 +6,7 @@ var menu = {
 	},
 
 	create: function() {
+		
 		this.bgsky = game.add.sprite(0, 0, 'menu');
 
 		this.playbtn = game.add.button(20, 950, 'playbtn', this.play_game, this, 0, 1);

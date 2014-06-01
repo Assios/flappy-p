@@ -75,7 +75,12 @@ var play = {
         this.space.onDown.add(this.jump, this);
         if (this.player.inWorld == false) this.restart();
         game.physics.arcade.collide(this.player, this.powerade, 0, this.restart, this);
-        game.physics.arcade.collide(this.player, this.poweradef, 0, this.restart, this)
+        game.physics.arcade.collide(this.player, this.poweradef, 0, this.restart, this);
+
+        if (this.score < 20)
+            this.player.body.position.y += Math.cos(Date.now()) * (this.score/3);
+        else
+            this.player.body.position.y += Math.cos(Date.now()) * (6 + ((this.score-6)/4));
     },
 
     jump: function () {
@@ -104,7 +109,9 @@ var play = {
         this.power.reset(W, DEFAULT_UP + random);
         this.power2.reset(W, DEFAULT_DOWN + random);
         this.power.body.velocity.x = -250;
-        this.power2.body.velocity.x = -250
+        this.power2.body.velocity.x = -250;
+
+
     },
     updateScore: function () {
         this.score += 1;
