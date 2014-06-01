@@ -12,6 +12,7 @@ var load = {
         this.scale.setScreenSize(true);
 
         game.stage.backgroundColor = '#1d1a4f';
+        game.add.text(H/2, W/2, "LOADING", { font: "35px Arial", fill: "#fff", align: "center" });
         game.load.image('sky', 'assets/sky.jpg');
         game.load.spritesheet('bird', 'assets/bird.png', 72, 64);
         game.load.image('powerade', 'assets/powerade.png');
