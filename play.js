@@ -91,7 +91,8 @@ var play = {
     },
     restart: function () {
         LAST = SCORE;
-        this.air.stop();
+        if (SOUND)
+            this.air.stop();
         game.state.start('menu');
     },
     add_p: function () {
