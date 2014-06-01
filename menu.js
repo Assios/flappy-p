@@ -30,7 +30,6 @@ var menu = {
             fill: "#fff",
             align: "center"
         });
-
 	},
 
 	play_game: function() {
