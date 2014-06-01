@@ -7,6 +7,7 @@ var LAST = 0;
 var DEFAULT_UP = -235;
 var DEFAULT_DOWN = 540;
 var SOUND = 1;
+var HARDCORE = 0;
 
 var game = new Phaser.Game(W, H, Phaser.AUTO, 'game', null, false, false);
 

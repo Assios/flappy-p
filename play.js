@@ -77,10 +77,14 @@ var play = {
         game.physics.arcade.collide(this.player, this.powerade, 0, this.restart, this);
         game.physics.arcade.collide(this.player, this.poweradef, 0, this.restart, this);
 
-        if (this.score < 20)
-            this.player.body.position.y += Math.cos(Date.now()) * (this.score/3);
-        else
-            this.player.body.position.y += Math.cos(Date.now()) * (6 + ((this.score-6)/4));
+        if (HARDCORE) {
+            if (this.score < 20)
+                this.player.body.position.y += Math.cos(Date.now()) * (this.score/2);
+            else if (this.score < 30)
+                this.player.body.position.y += Math.cos(Date.now()) * (10 + ((this.score-10)/3));
+            else
+                this.player.body.position.y += Math.cos(Date.now()) * 20;
+        }
     },
 
     jump: function () {

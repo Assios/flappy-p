@@ -3,6 +3,7 @@ var menu = {
 	preload: function() {
 		game.load.spritesheet('soundbtn', 'assets/soundbtn.png', 100, 100);
 		game.load.spritesheet('playbtn', 'assets/play.png', 150, 150);
+		game.load.spritesheet('hardcoreb', 'assets/hardcore.png', 150, 150);
 	},
 
 	create: function() {
@@ -10,6 +11,11 @@ var menu = {
 		this.bgsky = game.add.sprite(0, 0, 'menu');
 
 		this.playbtn = game.add.button(20, 950, 'playbtn', this.play_game, this, 0, 1);
+
+		if (BEST > 19)
+			game.add.button(150, 950, 'hardcoreb', this.play_hardcore, this, 0, 1);
+		else
+			game.add.button(150, 950, 'hardcoreb', this.not_yet, this, 0, 1);
 
 		this.button = game.add.button(500, 1000, 'soundbtn', this.toggle, this);
 		if (SOUND == 1)
@@ -29,16 +35,22 @@ var menu = {
 		//Lag meny her
 	},
 
-	update: function() {
-
-		if (game.input.activePointer.isDown)
-	    {
-			//this.game.state.start('play');		
-	    }
+	play_game: function() {
+		ḦARDCORE = 0;
+		this.game.state.start('play');
 	},
 
-	play_game: function() {
-		this.game.state.start('play')
+	play_hardcore: function() {
+		HARDCORE = 1;
+		this.game.state.start('play');
+	},
+
+	not_yet: function() {
+		this.game.add.text(20, 800, "You need 20 points to unlock hardcore mode", {
+            font: "28px Arial",
+            fill: "#000",
+            align: "center"
+        });
 	},
 
 	toggle: function() {
