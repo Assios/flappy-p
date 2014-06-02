@@ -155,6 +155,8 @@ var play = {
     updateScore: function () {
         if (HARDCORE)
             this.score += 3;
+        else
+            this.score += 1;
         SCORE = this.score;
         if (this.score > BEST) {
             BEST = this.score
