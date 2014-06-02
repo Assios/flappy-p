@@ -104,6 +104,14 @@ var play = {
             this.randomSound();
     },
     restart: function () {
+
+        TOTAL = TOTAL += SCORE;
+
+        document.cookie = 'totalcookie='+TOTAL+'; expires=Fri, 1 Aug 2015 20:47:11 UTC; path=/';
+
+        if (SCORE >= BEST) {
+            document.cookie = 'bestcookie='+BEST+'; expires=Fri, 1 Aug 2015 20:47:11 UTC; path=/';
+        }
         LAST = SCORE;
         if (SOUND)
             this.air.stop();
@@ -122,7 +130,14 @@ var play = {
         this.power.body.velocity.x = -250;
         this.power2.body.velocity.x = -250;
 
-
+        if (BDSM) {
+            if ((Math.floor(Math.random() * 2) + 1) == 1)
+                rr = 80;
+            else
+                rr = -80;
+            this.power.body.velocity.y = rr;
+            this.power2.body.velocity.y = rr;
+        }
     },
     updateScore: function () {
         this.score += 1;
