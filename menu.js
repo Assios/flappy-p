@@ -26,16 +26,15 @@ var menu = {
 
 		this.playbtn = game.add.button(20, 950, 'playbtn', this.play_game, this, 0, 1);
 
-		if (BEST > 59)
+		if (BEST > 5)
 			game.add.button(150, 950, 'hardcoreb', this.play_hardcore, this, 0, 1);
 		else
 			game.add.button(150, 950, 'hardcoreb', this.not_yet, this, 0, 1);
 
-		if (TOTAL > 9999)
+		if (TOTAL > 10)
 			game.add.button(290, 950, 'bdsm', this.play_bdsm, this, 0, 1);
 		else
 			game.add.button(290, 950, 'bdsm', this.not_yet2, this, 0, 1);
-
 
 		this.button = game.add.button(500, 1000, 'soundbtn', this.toggle, this);
 		if (SOUND == 1)

@@ -1,17 +1,32 @@
 var play = {
     create: function () {
         if (SOUND) {
+            if (!BDSM) {
             this.air = this.game.add.audio('air');
             this.air.volume = 1.6;
             this.air.play();
+        }
             this.novelle = this.game.add.audio('novelle');
             this.novelle.stop();
             if (HARDCORE) {
+                this.novelle.volume = 2.0;
                 this.novelle.play();
             }
+        if (BDSM) {
+            this.kink = this.game.add.audio('kink');
+            this.kink.play();  
+        }
         }
 
         this.sky = game.add.sprite(0, 0, 'sky');
+
+        if (HARDCORE) {
+            this.game.add.text(60, 400, "HARDCORE", {
+                font: "60px Arial",
+                fill: "#752d27",
+                align: "center"
+            });
+        }
 
         if (SOUND) {
         this.m1 = this.game.add.audio('m1');
@@ -83,12 +98,7 @@ var play = {
         game.physics.arcade.collide(this.player, this.poweradef, 0, this.restart, this);
 
         if (HARDCORE) {
-            if (this.score < 20)
-                this.player.body.position.y += Math.cos(Date.now()) * (this.score/2);
-            else if (this.score < 30)
-                this.player.body.position.y += Math.cos(Date.now()) * (10 + ((this.score-10)/3));
-            else
-                this.player.body.position.y += Math.cos(Date.now()) * (10 + ((this.score-10)/3));
+            this.player.body.position.y += Math.cos(Date.now()) * (this.score/3);
         }
     },
 
@@ -114,9 +124,12 @@ var play = {
         }
         LAST = SCORE;
         if (SOUND)
-            this.air.stop();
+            if (!BDSM)
+                this.air.stop();
             if (HARDCORE)
                 this.novelle.stop();
+            if (BDSM)
+                this.kink.stop();
         game.state.start('menu');
     },
     add_p: function () {
@@ -140,7 +153,8 @@ var play = {
         }
     },
     updateScore: function () {
-        this.score += 1;
+        if (HARDCORE)
+            this.score += 3;
         SCORE = this.score;
         if (this.score > BEST) {
             BEST = this.score

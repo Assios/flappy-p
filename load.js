@@ -20,6 +20,7 @@ var load = {
         game.load.image('menu', 'assets/bg_menu.jpg');
         game.load.audio('air', 'assets/air.mp3');
         game.load.audio('novelle', 'assets/novelle.mp3');
+        game.load.audio('kink', 'assets/kink.mp3');
 
         game.load.audio('m1', 'assets/m1.mp3');
         game.load.audio('m2', 'assets/m2.mp3');
