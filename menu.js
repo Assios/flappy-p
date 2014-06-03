@@ -5,12 +5,15 @@ var menu = {
 		game.load.spritesheet('playbtn', 'assets/play.png', 150, 150);
 		game.load.spritesheet('hardcoreb', 'assets/hardcore.png', 150, 150);
 		game.load.spritesheet('bdsm', 'assets/bdsm.png', 150, 150);
+		game.load.spritesheet('poster', 'assets/posterbutton.jpg', 90, 40);
 	},
 
 	create: function() {
 
 		//read bestcookie
-		BEST = parseInt(this.readCookie("bestcookie"))
+		BEST = parseInt(this.readCookie("bestcookie"));
+
+		POSTER = parseInt(this.readCookie("postercookie"));
 
 		if (isNaN(BEST))
 			BEST = 0;
@@ -51,6 +54,9 @@ var menu = {
             fill: "#fff",
             align: "center"
         });
+
+        if (POSTER)
+        	game.add.button(40, 370, 'poster', this.pozxxx, this);
 	},
 
 	play_game: function() {
@@ -69,6 +75,10 @@ var menu = {
 		HARDCORE = 0;
 		BDSM = 1;
 		this.game.state.start('play');
+	},
+
+	pozxxx: function() {
+		window.open("/gratulerer/du/vant/denne/posteren.png");
 	},
 
 	not_yet: function() {

@@ -100,6 +100,12 @@ var play = {
         if (HARDCORE) {
             this.player.body.position.y += Math.cos(Date.now()) * (this.score/3);
         }
+
+        if (BDSM) {
+            if (this.score > 29)
+                POSTER = 1;
+                document.cookie = 'postercookie='+POSTER+'; expires=Fri, 1 Aug 2015 20:47:11 UTC; path=/';
+        }
     },
 
     jump: function () {

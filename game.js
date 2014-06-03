@@ -10,6 +10,7 @@ var SOUND = 1;
 var HARDCORE = 0;
 var TOTAL = 0;
 var BDSM = 0;
+var POSTER = 0;
 
 
 var game = new Phaser.Game(W, H, Phaser.AUTO, 'game', null, false, false);
