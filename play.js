@@ -133,6 +133,8 @@ var play = {
             if (!BDSM)
                 this.air.stop();
             if (HARDCORE)
+                if (SCORE > 29)
+                    document.cookie = 'hccookie=1; expires=Fri, 1 Aug 2015 20:47:11 UTC; path=/';
                 this.novelle.stop();
             if (BDSM)
                 this.kink.stop();

@@ -6,12 +6,15 @@ var menu = {
 		game.load.spritesheet('hardcoreb', 'assets/hardcore.png', 150, 150);
 		game.load.spritesheet('bdsm', 'assets/bdsm.png', 150, 150);
 		game.load.spritesheet('poster', 'assets/posterbutton.jpg', 90, 40);
+		game.load.spritesheet('ach_button', 'assets/ach_button.jpg', 200, 50);
 	},
 
 	create: function() {
 
 		//read bestcookie
 		BEST = parseInt(this.readCookie("bestcookie"));
+
+		HC30 = parseInt(this.readCookie("hccookie"));
 
 		POSTER = parseInt(this.readCookie("postercookie"));
 
@@ -45,6 +48,9 @@ var menu = {
 		else
 			this.button.frame = 0;
 
+		this.ach_button = game.add.button(20, 750, 'ach_button', this.goto_ach, this);
+		this.ach_button.scale.setTo(2, 2);
+
 		this.game.add.text(20, 20, "LAST: " + LAST, { font: "35px Arial", fill: "#fff", align: "center" });
 
 		this.game.add.text(210, 90, "TOTAL: " + TOTAL, { font: "35px Arial", fill: "#fff", align: "center" });
@@ -69,6 +75,10 @@ var menu = {
 		HARDCORE = 1;
 		BDSM = 0;
 		this.game.state.start('play');
+	},
+
+	goto_ach: function() {
+		game.state.start('achievements');
 	},
 
 	play_bdsm: function() {

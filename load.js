@@ -17,6 +17,7 @@ var load = {
         game.load.spritesheet('bird', 'assets/bird.png', 72, 64);
         game.load.image('powerade', 'assets/powerade.png');
         game.load.image('poweradef', 'assets/powerade_f.png');
+        game.load.image('achievements', 'assets/achievements.jpg');
         game.load.image('menu', 'assets/bg_menu.jpg');
         game.load.audio('air', 'assets/air.mp3');
         game.load.audio('novelle', 'assets/novelle.mp3');

@@ -11,12 +11,15 @@ var HARDCORE = 0;
 var TOTAL = 0;
 var BDSM = 0;
 var POSTER = 0;
+var A_POINTS = 0;
+var HC30 = 0;
 
 
 var game = new Phaser.Game(W, H, Phaser.AUTO, 'game', null, false, false);
 
 game.state.add('load', load);
 game.state.add('menu', menu);
+game.state.add('achievements', achievements);
 game.state.add('play', play);
 
 game.state.start('load');
