@@ -17,11 +17,6 @@ var achievements = {
 
 			game.add.sprite(0, 0, 'achievements');
 
-			this.game.add.text(60, 1050, "To be continued...", { 
-							font: "35px Arial", 
-							fill: "#000", 
-							align: "center"});
-
 			A_POINTS = 0;
 
 			//ACHIEVEMENTS
