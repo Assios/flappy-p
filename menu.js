@@ -16,7 +16,13 @@ var menu = {
 
 		HC30 = parseInt(this.readCookie("hccookie"));
 
+		if (isNaN(HC30))
+			HC30 = 0;
+
 		POSTER = parseInt(this.readCookie("postercookie"));
+
+		if (isNaN(POSTER))
+			POSTER = 0;
 
 		if (isNaN(BEST))
 			BEST = 0;
