@@ -15,7 +15,7 @@ var A_POINTS = 0;
 var HC30 = 0;
 
 
-var game = new Phaser.Game(W, H, Phaser.AUTO, 'game', null, false, false);
+var game = new Phaser.Game(W, H, Phaser.CANVAS, 'game', null, false, false);
 
 game.state.add('load', load);
 game.state.add('menu', menu);
