@@ -11,29 +11,24 @@ var menu = {
 
 	create: function() {
 
-		//read bestcookie
+		// read cookies
 		BEST = parseInt(this.readCookie("bestcookie"));
-
 		HC30 = parseInt(this.readCookie("hccookie"));
 
 		if (isNaN(HC30))
 			HC30 = 0;
-
 		POSTER = parseInt(this.readCookie("postercookie"));
-
 		if (isNaN(POSTER))
 			POSTER = 0;
 
 		if (isNaN(BEST))
 			BEST = 0;
 
-		//read totalcookie
-
 		TOTAL = parseInt(this.readCookie("totalcookie"));
 
 		if (isNaN(TOTAL))
 			TOTAL = 0;
-		
+
 		this.bgsky = game.add.sprite(0, 0, 'menu');
 
 		this.playbtn = game.add.button(20, 950, 'playbtn', this.play_game, this, 0, 1);
@@ -94,7 +89,7 @@ var menu = {
 	},
 
 	pozxxx: function() {
-		window.open("/gratulerer/du/vant/denne/posteren.png");
+		window.open("/assets/poster.png");
 	},
 
 	not_yet: function() {

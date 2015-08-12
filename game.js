@@ -14,7 +14,6 @@ var POSTER = 0;
 var A_POINTS = 0;
 var HC30 = 0;
 
-
 var game = new Phaser.Game(W, H, Phaser.CANVAS, 'game', null, false, false);
 
 game.state.add('load', load);

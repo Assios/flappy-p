@@ -15,8 +15,8 @@ var load = {
         game.add.text(50, 100, "LOADING", { font: "80px Arial", fill: "#fff", align: "center" });
         game.load.image('sky', 'assets/sky.jpg');
         game.load.spritesheet('bird', 'assets/bird.png', 72, 64);
-        game.load.image('powerade', 'assets/powerade.png');
-        game.load.image('poweradef', 'assets/powerade_f.png');
+        game.load.image('obstacle', 'assets/obstacle.png');
+        game.load.image('obstaclef', 'assets/obstacle_f.png');
         game.load.image('achievements', 'assets/achievements.jpg');
         game.load.image('menu', 'assets/bg_menu.jpg');
         game.load.audio('air', 'assets/air.mp3');

@@ -51,26 +51,26 @@ var play = {
         this.m10.volume = 0.3;
         }
         this.space = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-        this.powerade = game.add.group();
-        this.powerade.createMultiple(5, 'powerade');
-        this.powerade.setAll('checkWorldBounds', true);
-        this.powerade.setAll('outOfBoundsKill', true);
-        this.powerade.enableBody = true;
-        this.powerade.scale.setTo(1.27, 1.27);
-        this.poweradef = game.add.group();
-        this.poweradef.createMultiple(5, 'poweradef');
-        this.poweradef.setAll('checkWorldBounds', true);
-        this.poweradef.setAll('outOfBoundsKill', true);
-        this.poweradef.enableBody = true;
-        this.poweradef.scale.setTo(1.27, 1.27);
+        this.obstacle = game.add.group();
+        this.obstacle.createMultiple(5, 'obstacle');
+        this.obstacle.setAll('checkWorldBounds', true);
+        this.obstacle.setAll('outOfBoundsKill', true);
+        this.obstacle.enableBody = true;
+        this.obstacle.scale.setTo(1.27, 1.27);
+        this.obstaclef = game.add.group();
+        this.obstaclef.createMultiple(5, 'obstaclef');
+        this.obstaclef.setAll('checkWorldBounds', true);
+        this.obstaclef.setAll('outOfBoundsKill', true);
+        this.obstaclef.enableBody = true;
+        this.obstaclef.scale.setTo(1.27, 1.27);
         game.physics.startSystem(Phaser.Physics.ARCADE);
         this.player = this.game.add.sprite(W / 2, H / 2 - 100, 'bird');
         this.player.scale.setTo(2.5, 2.5);
         this.player.animations.add('go', [0, 1, 2, 3, 4, 5], 10, true);
         this.player.animations.play('go');
         game.physics.arcade.enable(this.player);
-        game.physics.arcade.enable(this.powerade);
-        game.physics.arcade.enable(this.poweradef);
+        game.physics.arcade.enable(this.obstacle);
+        game.physics.arcade.enable(this.obstaclef);
         this.player.anchor.setTo(0.5, 0.5);
         this.score = 0;
         this.scoretext = this.game.add.text(20, 20, "SCORE: 0", {
@@ -94,8 +94,8 @@ var play = {
         game.input.onDown.add(this.jump, this);
         this.space.onDown.add(this.jump, this);
         if (this.player.inWorld == false) this.restart();
-        game.physics.arcade.collide(this.player, this.powerade, 0, this.restart, this);
-        game.physics.arcade.collide(this.player, this.poweradef, 0, this.restart, this);
+        game.physics.arcade.collide(this.player, this.obstacle, 0, this.restart, this);
+        game.physics.arcade.collide(this.player, this.obstaclef, 0, this.restart, this);
 
         if (HARDCORE) {
             this.player.body.position.y += Math.cos(Date.now()) * (this.score/3);
@@ -104,7 +104,7 @@ var play = {
         if (BDSM) {
             if (this.score > 29)
                 POSTER = 1;
-                document.cookie = 'postercookie='+POSTER+'; expires=Fri, 1 Aug 2015 20:47:11 UTC; path=/';
+                document.cookie = 'postercookie='+POSTER+'; expires=Fri, 1 Aug 2020 20:47:11 UTC; path=/';
         }
     },
 
@@ -123,10 +123,10 @@ var play = {
 
         TOTAL = TOTAL += SCORE;
 
-        document.cookie = 'totalcookie='+TOTAL+'; expires=Fri, 1 Aug 2015 20:47:11 UTC; path=/';
+        document.cookie = 'totalcookie='+TOTAL+'; expires=Fri, 1 Aug 2020 20:47:11 UTC; path=/';
 
         if (SCORE >= BEST) {
-            document.cookie = 'bestcookie='+BEST+'; expires=Fri, 1 Aug 2015 20:47:11 UTC; path=/';
+            document.cookie = 'bestcookie='+BEST+'; expires=Fri, 1 Aug 2020 20:47:11 UTC; path=/';
         }
         LAST = SCORE;
         if (SOUND)
@@ -134,30 +134,30 @@ var play = {
                 this.air.stop();
             if (HARDCORE)
                 if (SCORE > 29)
-                    document.cookie = 'hccookie=1; expires=Fri, 1 Aug 2015 20:47:11 UTC; path=/';
+                    document.cookie = 'hccookie=1; expires=Fri, 1 Aug 2020 20:47:11 UTC; path=/';
                 this.novelle.stop();
             if (BDSM)
                 this.kink.stop();
         game.state.start('menu');
     },
     add_p: function () {
-        this.power = this.powerade.getFirstDead();
-        this.power2 = this.poweradef.getFirstDead();
-        this.power.body.setSize(139, 581, 35, 115);
-        this.power2.body.setSize(139, 600, 35, 20);
+        this.obst = this.obstacle.getFirstDead();
+        this.obst2 = this.obstaclef.getFirstDead();
+        this.obst.body.setSize(139, 581, 35, 115);
+        this.obst2.body.setSize(139, 600, 35, 20);
         var random = Math.floor(Math.random() * 400) - 200;
-        this.power.reset(W, DEFAULT_UP + random);
-        this.power2.reset(W, DEFAULT_DOWN + random);
-        this.power.body.velocity.x = -250;
-        this.power2.body.velocity.x = -250;
+        this.obst.reset(W, DEFAULT_UP + random);
+        this.obst2.reset(W, DEFAULT_DOWN + random);
+        this.obst.body.velocity.x = -250;
+        this.obst2.body.velocity.x = -250;
 
         if (BDSM) {
             if ((Math.floor(Math.random() * 2) + 1) == 1)
                 rr = 80;
             else
                 rr = -80;
-            this.power.body.velocity.y = rr;
-            this.power2.body.velocity.y = rr;
+            this.obst.body.velocity.y = rr;
+            this.obst2.body.velocity.y = rr;
         }
     },
     updateScore: function () {
