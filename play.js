@@ -104,7 +104,7 @@ var play = {
         if (BDSM) {
             if (this.score > 29)
                 POSTER = 1;
-                document.cookie = 'postercookie='+POSTER+'; expires=Fri, 1 Aug 2020 20:47:11 UTC; path=/';
+                document.cookie = 'postercookie='+POSTER+'; expires=Fri, 1 Aug 2030 20:47:11 UTC; path=/';
         }
     },
 
@@ -123,10 +123,10 @@ var play = {
 
         TOTAL = TOTAL += SCORE;
 
-        document.cookie = 'totalcookie='+TOTAL+'; expires=Fri, 1 Aug 2020 20:47:11 UTC; path=/';
+        document.cookie = 'totalcookie='+TOTAL+'; expires=Fri, 1 Aug 2030 20:47:11 UTC; path=/';
 
         if (SCORE >= BEST) {
-            document.cookie = 'bestcookie='+BEST+'; expires=Fri, 1 Aug 2020 20:47:11 UTC; path=/';
+            document.cookie = 'bestcookie='+BEST+'; expires=Fri, 1 Aug 2030 20:47:11 UTC; path=/';
         }
         LAST = SCORE;
         if (SOUND)
@@ -134,7 +134,7 @@ var play = {
                 this.air.stop();
             if (HARDCORE)
                 if (SCORE > 29)
-                    document.cookie = 'hccookie=1; expires=Fri, 1 Aug 2020 20:47:11 UTC; path=/';
+                    document.cookie = 'hccookie=1; expires=Fri, 1 Aug 2030 20:47:11 UTC; path=/';
                 this.novelle.stop();
             if (BDSM)
                 this.kink.stop();
